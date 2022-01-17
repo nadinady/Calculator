@@ -10,6 +10,10 @@ public interface ICalculator {
 
     double divide(double a, double b);
 
+    boolean checkExpression (String expression);
+
     String searchAction (String expression);
+
+    double[] stringToDouble (String[] parseString);
 
 }

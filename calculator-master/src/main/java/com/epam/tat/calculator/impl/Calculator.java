@@ -3,6 +3,10 @@ package com.epam.tat.calculator.impl;
 import com.epam.tat.calculator.ICalculator;
 import org.apache.commons.math3.util.Precision;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+
 public class Calculator implements ICalculator {
 
     private int precision;
@@ -46,5 +50,23 @@ public class Calculator implements ICalculator {
         }
         return action;
     }
+    @Override
+    public boolean checkExpression (String expression) {
+        String regex = "\\d+(\\.)?\\d*[\\+\\-\\*\\/]\\d+(\\.)?\\d*";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(expression);
+        return matcher.matches();
+    }
+    @Override
+    public double[] stringToDouble (String[] parseString) {
+        double [] arrToAction = new double[2];
+        for (int i = 0; i< parseString.length; i++) {
+            arrToAction[i]= Double.parseDouble(parseString[i]);
+
+        }
+        return arrToAction;
+
+    }
+
 }
 
