@@ -13,21 +13,38 @@ public class Calculator implements ICalculator {
 
     @Override
     public double add(double a, double b) {
-        return Precision.round(a+b,this.precision);
+        return Precision.round(a + b, this.precision);
     }
 
     @Override
     public double subtract(double a, double b) {
-        return Precision.round(a-b,this.precision);
+        return Precision.round(a - b, this.precision);
     }
 
     @Override
     public double multiply(double a, double b) {
-        return Precision.round(a*b,this.precision);
+        return Precision.round(a * b, this.precision);
     }
 
     @Override
     public double divide(double a, double b) {
-        return Precision.round(a/b,this.precision);
+        return Precision.round(a / b, this.precision);
+    }
+
+    @Override
+    public String searchAction(String expression) {
+        String escapeSymbol = "\\";
+        String action = " ";
+        for (int i = 0; i < expression.length(); i++) {
+            if (expression.charAt(i) == '+' || expression.charAt(i) == '-' || expression.charAt(i) == '*' ||
+                    expression.charAt(i) == '/') {
+                // action = escapeSymbol + expression.charAt(i);
+                action = escapeSymbol.concat(Character.toString(expression.charAt(i)));
+                break;
+
+            }
+        }
+        return action;
     }
 }
+

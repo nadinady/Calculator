@@ -9,9 +9,8 @@ public class Main {
         int precision;
         String expression;
         String [] parseString;
+        String action;
         double [] arrToAction = new double[2];
-        String escapeSymbol = "\\";
-        String action =" ";
         String regex = "\\d+(\\.)?\\d*[\\+\\-\\*\\/]\\d+(\\.)?\\d*";
         Pattern pattern = Pattern.compile(regex);
         System.out.println ("Enter the precision of calculate");
@@ -22,15 +21,7 @@ public class Main {
         expression = in.next();
         Matcher matcher = pattern.matcher(expression);
         if (matcher.matches()) {
-            for (int i = 0;i < expression.length(); i++) {
-                if (expression.charAt(i) == '+' || expression.charAt(i) == '-' || expression.charAt(i) == '*' ||
-                        expression.charAt(i) == '/') {
-                   // action = escapeSymbol + expression.charAt(i);
-                   action = escapeSymbol.concat(Character.toString(expression.charAt(i)));
-                    break;
-                }
-
-            }
+            action = calc.searchAction(expression);
             parseString =expression.split(action);
             for (int i = 0; i< parseString.length; i++) {
                 arrToAction[i]= Double.parseDouble(parseString[i]);
