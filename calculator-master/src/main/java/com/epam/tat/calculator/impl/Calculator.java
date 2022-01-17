@@ -11,6 +11,7 @@ public class Calculator implements ICalculator {
 
     private int precision;
 
+
     public Calculator(int precision) {
         this.precision = precision;
     }
