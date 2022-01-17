@@ -15,7 +15,7 @@ public class Main {
                 Calculator calc = new Calculator(precision);
                 System.out.println("Enter the expression for calculate");
                 expression = in.next();
-                if (calc.checkExpression(expression)) {
+                if (calc.checkExpression(expression, calc.getRegex())) {
 
                     arrToAction = calc.stringToDouble(expression.split(calc.searchAction(expression)));
                     switch (calc.searchAction(expression)) {

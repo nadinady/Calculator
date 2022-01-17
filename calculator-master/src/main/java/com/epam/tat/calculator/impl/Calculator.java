@@ -10,10 +10,15 @@ import java.util.regex.Pattern;
 public class Calculator implements ICalculator {
 
     private int precision;
+    private final String regex = "\\d+(\\.)?\\d*[\\+\\-\\*\\/]\\d+(\\.)?\\d*";
 
 
     public Calculator(int precision) {
         this.precision = precision;
+    }
+
+    public String getRegex() {
+        return regex;
     }
 
     @Override
@@ -52,9 +57,8 @@ public class Calculator implements ICalculator {
         return action;
     }
     @Override
-    public boolean checkExpression (String expression) {
-        String regex = "\\d+(\\.)?\\d*[\\+\\-\\*\\/]\\d+(\\.)?\\d*";
-        Pattern pattern = Pattern.compile(regex);
+    public boolean checkExpression (String expression, String forCheck) {
+        Pattern pattern = Pattern.compile(forCheck);
         Matcher matcher = pattern.matcher(expression);
         return matcher.matches();
     }

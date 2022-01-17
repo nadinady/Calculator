@@ -10,7 +10,7 @@ public interface ICalculator {
 
     double divide(double a, double b);
 
-    boolean checkExpression (String expression);
+    boolean checkExpression (String expression, String forCheck);
 
     String searchAction (String expression);
 
